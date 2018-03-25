@@ -68,7 +68,9 @@ def present_bias_path(edges, s, t, b, current_path):
   else:
     next = present_bias_next_node(edges, s, t, b)
     return present_bias_path(edges, next, t, b, current_path)
-
+#---
+#read file
+#---
 (nodes, edges) = read_file(sys.argv[1])
 b = float(sys.argv[2])
 s = sys.argv[3]
@@ -83,7 +85,8 @@ best_cost = min(costs)
 for i in range(0, len(costs)):
   if costs[i] == best_cost:
     best_path = paths[i]
-print(best_path, end=' ')
+#don't change line
+print(best_path, end=' ') 
 print(best_cost)
 
 biased_path = present_bias_path(edges, s, t, b, [])
