@@ -17,8 +17,8 @@ def read_file(filename):
 def adjacency_list(edges, s):
   neighbors = []
   for e in edges:
-    if edges[0] == s:
-      neighbors.append(edges[1])
+    if e[0] == s:
+      neighbors.append(e[1])
   return neighbors
 
 def all_simple_paths(edges, s, t, current_path, all_paths):
@@ -55,9 +55,11 @@ def present_bias_next_node(edges, s, t, b):
   costs = [0] * len(paths)
   for i in range(0, len(paths)):
     costs[i] = calculate_biased_cost(edges, paths[i], b)
-  best_cost = min(costs)
+  best_cost = costs[0]
+  best_path = paths[0]
   for i in range(0, len(costs)):
-    if costs[i] == best_cost:
+    if costs[i] < best_cost:
+      best_cost = costs[i]
       best_path = paths[i]
   return best_path[1]
 
